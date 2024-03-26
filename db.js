@@ -1,27 +1,14 @@
 const mongoose = require("mongoose");
-
+require("dotenv").config();
+const MongoURL = process.env.MongoURL;
 // mongo url
 
-// const mongoURL = "mongodb://0.0.0.0:27017/hotels";
-const mongoURL =
-  "mongodb+srv://ayushm0092:password12345@hotels.v83gmlh.mongodb.net/";
-//setup connection mongodb://localhost:27017
+// for offline connections -> "mongodb://0.0.0.0:27017/hotels";
+const mongoURL = MongoURL;
 mongoose.connect(mongoURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
-// mongoose
-//   .connect("mongodb://localhost:27027/hotels", {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => {
-//     console.log("Connected to MongoDB");
-//   })
-//   .catch((error) => {
-//     console.error("Error connecting to MongoDB:", error);
-//   });
 
 // mongoose maintains default connections representing mongodb
 const db = mongoose.connection;
